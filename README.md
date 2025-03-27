@@ -1,4 +1,3 @@
-# stranded-depths
 # **Stranded Depths**
 
 ## **Genre:**  
