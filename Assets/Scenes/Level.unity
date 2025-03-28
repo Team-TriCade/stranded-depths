@@ -275,7 +275,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 51.7
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -301,8 +301,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 437, y: 121, z: 432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -319,6 +319,8 @@ GameObject:
   - component: {fileID: 2050043969}
   - component: {fileID: 2050043968}
   - component: {fileID: 2050043967}
+  - component: {fileID: 2050043970}
+  - component: {fileID: 2050043971}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -395,16 +397,52 @@ Transform:
   m_GameObject: {fileID: 2050043966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 160}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2050043970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050043966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76bfae589e6b885aeacd2e54f65a5391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 1024
+  depth: 1024
+  height: 100
+  scale: 3
+--- !u!114 &2050043971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050043966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671f02c2847cc43089b38ce57c94b74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 1700193797189004, guid: cc9601049784bf744bc7f80118f64966, type: 3}
+  - {fileID: 1844854736973868, guid: 297334b91a6a60843a5e23630fee1c52, type: 3}
+  - {fileID: 1793094226105878, guid: 23db83dfd140ec346b60d4f59de10212, type: 3}
+  - {fileID: 1793094226105878, guid: fb5ab9ff494eb564b88e64da94186554, type: 3}
+  - {fileID: 1781159822730954, guid: 132b502d20f237e409dec8efa4fdf386, type: 3}
+  - {fileID: 1639331870690070, guid: 5e9126c23e60f0f4fa4cf5f8b1ec5cf7, type: 3}
+  objectCount: 470
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 2050043969}
+  - {fileID: 963194228}

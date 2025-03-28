@@ -15,7 +15,7 @@ public class ObjectSpawner : MonoBehaviour
     void SpawnObjects(){
         UnityEngine.Terrain terrain = GetComponent<UnityEngine.Terrain>(); // get the terrain component from the GameObject
         TerrainData terrainData = terrain.terrainData; // retrievee the terrain's data
-
+    
         for(int i = 0; i < objectCount; i++){
             //Pick a random prefab
             GameObject prefab = objects[Random.Range(0, objects.Length)];
@@ -26,7 +26,7 @@ public class ObjectSpawner : MonoBehaviour
 
             Vector3 position = new Vector3(x,y,z);
 
-            //Spawn the tree
+            //Spawn the objects
             Instantiate(prefab, position, Quaternion.Euler(0, Random.Range(0,360), 0)); // spawn them at different rotations around the y axis(horizontally) 
         }
     }

@@ -31,19 +31,51 @@ public class MyTerrainGenerator : MonoBehaviour
         float[,] heights = new float[width, depth]; // create a heightmap array
 
 
-
+        //random offset for river to create a different pattern every time
+        float riverOffset = Random.Range(0f,100f);
+        
+        // Generate a base perlin noise terrain
         for(int x = 0; x<width; x++){
             for(int y=0;y<depth;y++){
                 float xCoord = (float)x/width*scale;
                 float yCoord = (float)y/width*scale;
-                heights[x,y] = Mathf.PerlinNoise(xCoord, yCoord); // get perlin noise value and normalise it
+                float noise = Mathf.PerlinNoise(xCoord, yCoord); // get perlin noise value
+                 
+                //create a curved river path using perlin noise 
+                float riverPath = Mathf.PerlinNoise(y*0.004f+riverOffset, 0) * width; // y*n, more the n, the more the curves
+
+                //control river width dynamically using another perlin noise function
+                float riverWidth = Mathf.PerlinNoise(y*0.1f, riverOffset) * 20f + 10f; // we can also play with these values for the thickness
+
+                if(Mathf.Abs(x-riverPath) < riverWidth){ // lower the terrain near the river
+                    float blendFactor = Mathf.Abs(x-riverPath)/riverWidth;
+                    noise *= Mathf.Lerp(0.2f, 1f, blendFactor); // make the riverbed lower
+
+                }
+                Debug.Log($"River Path at {y}: {riverPath}, Width: {riverWidth}");
+                heights[x,y] = noise;
+
             }
         }
+
+        // // Carve the river's path
+        // for(int x = 0; x < width; x++){
+        //     int riverY = (int)(depth * (Mathf.PerlinNoise(x*0.02f, 0) * 0.02f)); // a slight curve
+
+        //     for (int offset = -3; offset <= 3; offset++){ // adjust river width
+        //         int y = riverY + offset;
+        //         if(y >= 0 && y < depth){
+        //             heights[x,y] *= 0.02f; // lower the height to create a riverbed
+        //         }
+
+        //     }
+        // }
         return heights;
     }
 
     // Update is called once per frame
     void Update(){
         
+
     }
 }

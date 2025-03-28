@@ -352,6 +352,7 @@
 -r:"Library/Bee/artifacts/2400b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"/home/user_47/Unity/Hub/Editor/2022.3.60f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/home/user_47/Unity/Hub/Editor/2022.3.60f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/Scripts/ForceCompile.cs"
 "Assets/Scripts/Player/CameraController.cs"
 "Assets/Scripts/Player/PlayerController.cs"
 "Assets/Scripts/Terrain/MyTerrainGenerator.cs"
