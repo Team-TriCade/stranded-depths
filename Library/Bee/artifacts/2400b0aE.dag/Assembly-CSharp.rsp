@@ -352,6 +352,7 @@
 -analyzer:"/home/user_47/Unity/Hub/Editor/2022.3.60f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/Player/CameraController.cs"
 "Assets/Scripts/Player/PlayerController.cs"
+"Assets/Scripts/Terrain/MyTerrainGenerator.cs"
 -langversion:9.0
 /deterministic
 /optimize+

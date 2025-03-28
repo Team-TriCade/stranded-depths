@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/Player/CameraController.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerController.cs" />
+    <Compile Include="Assets/Scripts/Terrain/MyTerrainGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
