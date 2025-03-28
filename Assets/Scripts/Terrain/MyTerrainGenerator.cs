@@ -10,6 +10,8 @@ public class MyTerrainGenerator : MonoBehaviour
 
     public float scale = 2f; // the controls the roughness of the terrain. higher values will give rise to a smoother terrain
 
+    public float riverOffset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,7 @@ public class MyTerrainGenerator : MonoBehaviour
 
 
         //random offset for river to create a different pattern every time
-        float riverOffset = Random.Range(0f,100f);
+        riverOffset = Random.Range(0f,100f);
         
         // Generate a base perlin noise terrain
         for(int x = 0; x<width; x++){

@@ -299,6 +299,7 @@ MonoBehaviour:
   - {fileID: 1781159822730954, guid: 7bedeee199ce21e448d15c6202544a1d, type: 3}
   - {fileID: 1781159822730954, guid: abdb119c0fd9370439c28df6fa6e75c0, type: 3}
   - {fileID: 1781159822730954, guid: 7bedeee199ce21e448d15c6202544a1d, type: 3}
+  terrainGenerator: {fileID: 0}
   objectCount: 470
 --- !u!114 &2102040486
 MonoBehaviour:
@@ -316,6 +317,7 @@ MonoBehaviour:
   depth: 1024
   height: 100
   scale: 2
+  riverOffset: 0
 --- !u!154 &2102040487
 TerrainCollider:
   m_ObjectHideFlags: 0
