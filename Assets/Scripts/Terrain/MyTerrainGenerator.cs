@@ -30,6 +30,8 @@ public class MyTerrainGenerator : MonoBehaviour
     float[,] GenerateHeights(float terrainHeight){ // generates a 2d array to store height values
         float[,] heights = new float[width, depth]; // create a heightmap array
 
+
+
         for(int x = 0; x<width; x++){
             for(int y=0;y<depth;y++){
                 float xCoord = (float)x/width*scale;
