@@ -1,1 +1,8 @@
+# Ignore Unity's package cache
+Library/
+Logs/
 Temp/
+Obj/
+UserSettings/
+Packages/PackageCache/
+
