@@ -73,6 +73,7 @@
     <Compile Include="Assets/Scripts/Test/MapGenerator.cs" />
     <Compile Include="Assets/Scripts/Misc/GameManager.cs" />
     <Compile Include="Assets/Scripts/Misc/ForceCompile.cs" />
+    <Compile Include="Assets/Scripts/Test/FalloffGenerator.cs" />
     <Compile Include="Assets/Scripts/Survival/Hunger.cs" />
     <Compile Include="Assets/Scripts/Test/MapDisplay.cs" />
     <Compile Include="Assets/Scripts/Terrain/ObjectSpawner.cs" />

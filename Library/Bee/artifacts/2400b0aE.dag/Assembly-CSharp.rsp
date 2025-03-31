@@ -382,6 +382,7 @@
 "Assets/Scripts/Terrain/MeshGeneratorOld.cs"
 "Assets/Scripts/Terrain/ObjectSpawner.cs"
 "Assets/Scripts/Test/EndlessTerrain.cs"
+"Assets/Scripts/Test/FalloffGenerator.cs"
 "Assets/Scripts/Test/MapDisplay.cs"
 "Assets/Scripts/Test/MapGenerator.cs"
 "Assets/Scripts/Test/MeshGenerator.cs"
