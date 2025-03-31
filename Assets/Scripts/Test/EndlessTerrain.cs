@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EndlessTerrain : MonoBehaviour
 {
+   const float scale = 1f;
+
    const float viewerMoveThresholdForChunkUpdate = 25f;
    const float sqrMoveThresholdForChunkUpdate = viewerMoveThresholdForChunkUpdate*viewerMoveThresholdForChunkUpdate;
 
@@ -19,7 +21,7 @@ public class EndlessTerrain : MonoBehaviour
    int chunksVisibleInViewDistance;
 
    Dictionary<Vector2, TerrainChunk> terrainChunkDict = new Dictionary<Vector2, TerrainChunk>();
-   List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>();
+   static List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>();
 
 
    void Start(){
@@ -32,7 +34,7 @@ public class EndlessTerrain : MonoBehaviour
    }
    
    void Update(){
-    viewerPosition = new Vector2(viewer.position.x, viewer.position.z);
+    viewerPosition = new Vector2(viewer.position.x, viewer.position.z)/scale;
     if((viewerPositionOld-viewerPosition).sqrMagnitude > sqrMoveThresholdForChunkUpdate){
     viewerPositionOld = viewerPosition;
     UpdateVisibleChunk();
@@ -55,9 +57,6 @@ public class EndlessTerrain : MonoBehaviour
 
           if(terrainChunkDict.ContainsKey(viewedChunkCoord)){
             terrainChunkDict[viewedChunkCoord].UpdateChunk();
-            if(terrainChunkDict[viewedChunkCoord].IsVisible()){
-              terrainChunksVisibleLastUpdate.Add(terrainChunkDict[viewedChunkCoord]);
-            }
           }
           else{
             terrainChunkDict.Add(viewedChunkCoord, new TerrainChunk(viewedChunkCoord, chunkSize, detailLevels, transform, mapMaterial));
@@ -95,8 +94,9 @@ public class EndlessTerrain : MonoBehaviour
         meshRenderer.material = material;
         
         Debug.Log("Assigned Material: " + material.name);
-        meshObject.transform.position =  positionV3;
+        meshObject.transform.position =  positionV3*scale;
         meshObject.transform.parent = parent;
+        meshObject.transform.localScale = Vector3.one*scale;
         SetVisible(false); // make sure it isnt visible from the start
 
         lodMeshes = new LODMesh[detailLevels.Length];
@@ -120,30 +120,31 @@ public class EndlessTerrain : MonoBehaviour
 
       public void UpdateChunk(){ // to determine if the chunk should be visible or not
         if(mapDataReceived){
-        float viewerDistanceFromNearestEdge = Mathf.Sqrt(bounds.SqrDistance(viewerPosition));
-        bool isVisible = viewerDistanceFromNearestEdge <= maxViewDistance;
-        if(isVisible){
-          int lodIndex = 0;
-          for(int i = 0; i < detailLevels.Length-1; i++){
-            if(viewerDistanceFromNearestEdge>detailLevels[i].visibleDistanceThreshold){
-          lodIndex = i+1;
+          float viewerDistanceFromNearestEdge = Mathf.Sqrt(bounds.SqrDistance(viewerPosition));
+          bool isVisible = viewerDistanceFromNearestEdge <= maxViewDistance;
+          if(isVisible){
+            int lodIndex = 0;
+            for(int i = 0; i < detailLevels.Length-1; i++){
+              if(viewerDistanceFromNearestEdge>detailLevels[i].visibleDistanceThreshold){
+            lodIndex = i+1;
+              }
+              else
+                break;
             }
-            else
-              break;
+            if(lodIndex != previousLODIndex){
+              LODMesh lodMesh = lodMeshes[lodIndex];
+              if(lodMesh.hasMesh){
+                previousLODIndex = lodIndex;
+                meshFilter.mesh = lodMesh.mesh;
+              }
+              else if(!lodMesh.hasRequestedMesh){
+                lodMesh.RequestMesh(mapData);
+              }
+            }
+            terrainChunksVisibleLastUpdate.Add(this);
           }
-          if(lodIndex != previousLODIndex){
-            LODMesh lodMesh = lodMeshes[lodIndex];
-            if(lodMesh.hasMesh){
-              previousLODIndex = lodIndex;
-              meshFilter.mesh = lodMesh.mesh;
-            }
-            else if(!lodMesh.hasRequestedMesh){
-              lodMesh.RequestMesh(mapData);
-            }
-          }
-        }
-        
-        SetVisible(isVisible);
+          
+          SetVisible(isVisible);
        }
       }
 

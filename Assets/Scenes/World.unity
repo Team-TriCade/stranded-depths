@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawmode: 2
-  levelOfDetail: 0
+  editorPreviewLOD: 0
   noiseScale: 32.8
   octaves: 5
   lacunarity: 1.75
@@ -555,6 +555,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa11d93b239fe43b59c4f1bf8164d6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detailLevels:
+  - lod: 0
+    visibleDistanceThreshold: 200
+  - lod: 1
+    visibleDistanceThreshold: 400
+  - lod: 2
+    visibleDistanceThreshold: 600
   viewer: {fileID: 1400268247}
   mapMaterial: {fileID: 2100000, guid: d9a218ef878bf1273b1024d1cfd48596, type: 2}
 --- !u!1 &691053354
